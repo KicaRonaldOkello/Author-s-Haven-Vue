@@ -17,7 +17,7 @@
           <v-card-text>{{ article.description }}</v-card-text>
 
           <v-card-actions>
-            <v-btn text color="deep-purple accent-4">Read</v-btn>
+            <v-btn text @click="loadAdrticle(article.slug)" color="deep-purple accent-4">Read</v-btn>
             <v-btn text color="deep-purple accent-4">Bookmark</v-btn>
             <v-spacer></v-spacer>
             <v-btn icon>
@@ -43,7 +43,11 @@ export default {
     this.fetchArticles();
   },
   methods: {
-    ...mapActions(["fetchArticles"])
+    ...mapActions(["fetchArticles"]),
+    loadAdrticle(slug) {
+      this.$router.push({ path: `/article/${slug}`})
+    }
+
   }
 };
 </script>
